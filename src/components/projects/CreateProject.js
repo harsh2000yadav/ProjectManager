@@ -23,12 +23,12 @@ class CreateProject extends Component {
                     <h4 className="grey-text-text-darken-4">Create New Project</h4>
                     <div className="input-field">
                         <label htmlFor="title">Project Title</label>
-                        <input type="text" id="title" onChange={this.handleChange} />
+                        <input type="text" id="title" onChange={this.handleChange} autoComplete='off'/>
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="desc">Description</label>
-                        <textarea id="desc" rows='30' className="materialize-textarea" onChange={this.handleChange}></textarea>
+                        <textarea id="desc" rows='30' className="materialize-textarea" onChange={this.handleChange} autoComplete='off'></textarea>
                     </div>
 
                     <div className="input-field">

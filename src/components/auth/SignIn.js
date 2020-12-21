@@ -23,12 +23,12 @@ class SignIn extends Component {
                     <h4 className="grey-text-text-darken-4">Sign In</h4>
                     <div className="input-field">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={this.handleChange} />
+                        <input type="email" id="email" onChange={this.handleChange} autoComplete='off' />
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={this.handleChange} />
+                        <input type="password" id="password" onChange={this.handleChange} autoComplete='off' />
                     </div>
 
                     <div className="input-field">
