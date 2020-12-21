@@ -7,11 +7,12 @@ import ProjectDetails from './components/projects/ProjectDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateProject from './components/projects/CreateProject'
+import bg from './img/laptop-bg.jpg'
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className="App" styles={{backgroundImage: `url(${bg})`}}>
           <Navbar />
           <Switch>
             <Route exact path='/' component={Dashboard} />
