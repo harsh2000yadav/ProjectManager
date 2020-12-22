@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createProject } from '../../store/actions/projectActions'
 
 class CreateProject extends Component {
     state = {
@@ -41,4 +43,4 @@ class CreateProject extends Component {
     }
 }
 
-export default CreateProject
+export default connect()(CreateProject)
