@@ -7,25 +7,34 @@ import {createStore, applyMiddleware, compose} from 'redux'
 import rootReducer from './store/reducers/rootReducer'
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
-import { reduxFirestore, getFirestore } from 'redux-firestore'
-import { getFirebase, reactReduxFirebase } from 'react-redux-firebase'
+import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-firestore'
+import { getFirebase, ReactReduxFirebaseProvider  } from 'react-redux-firebase'
 import fbConfig from './config/fbConfig'
+import firebase from 'firebase/app'
 
 const store = createStore(rootReducer, 
   compose(
-  applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore}))),
-  reduxFirestore(fbConfig),
-  reactReduxFirebase(fbConfig)
-  );
+  applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+  reduxFirestore(firebase,fbConfig),
+  ));
 
-ReactDOM.render(
-  <Provider store = {store}>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </Provider>,
-  document.getElementById('root')
-);
+  const rrfProps = {
+    firebase,
+    config: fbConfig,
+    dispatch: store.dispatch,
+    createFirestoreInstance
+  };
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
+    </Provider>,
+    document.getElementById("root")
+  )
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
